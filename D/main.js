@@ -142,11 +142,8 @@ recognition.onend = () => {
     isRecognizing = false;
 };
 
-// ボタンで音声認識を制御
-const startBtn = document.getElementById('startBtn');
-const stopBtn = document.getElementById('stopBtn');
-
-startBtn.addEventListener('click', () => {
+// ボタンのイベント設定
+document.getElementById('startButton').addEventListener('click', () => {
     if (!isRecognizing) {
         recognition.start();
         console.log('音声認識を開始します...');
@@ -154,7 +151,7 @@ startBtn.addEventListener('click', () => {
     }
 });
 
-stopBtn.addEventListener('click', () => {
+document.getElementById('stopButton').addEventListener('click', () => {
     if (isRecognizing) {
         recognition.stop();
         console.log('音声認識を停止しました。');
@@ -165,33 +162,25 @@ stopBtn.addEventListener('click', () => {
 // アニメーションをトリガーする関数
 function triggerNodAnimation() {
     if (currentAction) {
-        currentAction.reset(); // アニメーションをリセット
-        currentAction.timeScale = 5; // スピードを5倍に設定
-        currentAction.play(); // アニメーションを再生
-        console.log('アニメーションがトリガーされました');
+        currentAction.reset().play();
+    }
+    if (action1) {
+        action1.play();
+    }
+    if (action2) {
+        action2.play();
     }
 }
 
-// [保留アクション].002を5秒ごとに動かす
-let action2LastUpdate = 0;
-const action2Interval = 5000; // 5秒
-
+// アニメーションとレンダリングのループ
 function animate() {
     requestAnimationFrame(animate);
+
+    // アニメーションミキサーの更新
+    mixers.forEach((mixer) => mixer.update(0.01));
+
+    controls.update();
     renderer.render(scene, camera);
-
-    mixers.forEach(function (mixer) {
-        mixer.update(0.01);
-    });
-
-    const now = Date.now();
-    if (action2 && now - action2LastUpdate > action2Interval) {
-        action2.reset(); // アニメーションをリセット
-        action2.timeScale = 0.1; // スピードを0.1倍に設定
-        action2.play(); // アニメーションを再生
-        action2LastUpdate = now; // 最後の更新時間を更新
-        console.log('action2がトリガーされました');
-    }
 }
 
 animate();
