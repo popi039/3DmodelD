@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>show3DmodelPage</title>
+    <style>
+        /* ボタンのスタイルを大きくする */
+        button {
+            padding: 20px 40px; /* ボタンの内側のスペースを増やす */
+            font-size: 24px; /* フォントサイズを大きくする */
+            cursor: pointer; /* ホバー時にポインターカーソルにする */
+            margin: 10px; /* ボタン間のスペースを追加 */
+        }
+    </style>
     <script type="importmap">
         {
             "imports": {
@@ -17,11 +26,12 @@
 </head>
 
 <body>
-    <!-- 3Dモデルを表示するcanvasを作成 -->
+    <!-- 3Dモデル表示用のキャンバス -->
     <canvas id="canvas"></canvas> 
 
-    <!-- 音声認識の開始と停止を行うボタン -->
-    <button id="startBtn">start recording</button>
-    <button id="stopBtn">stop recording</button>
+    <!-- 音声認識操作用のボタン -->
+    <button id="start">Start Recording</button>
+    <button id="stop">Stop Recording</button>
 </body>
+
 </html>
