@@ -5,15 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>show3DmodelPage</title>
-    <style>
-        /* ボタンのスタイルを大きくする */
-        button {
-            padding: 20px 40px; /* ボタンの内側のスペースを増やす */
-            font-size: 24px; /* フォントサイズを大きくする */
-            cursor: pointer; /* ホバー時にポインターカーソルにする */
-            margin: 10px; /* ボタン間のスペースを追加 */
-        }
-    </style>
     <script type="importmap">
         {
             "imports": {
@@ -22,16 +13,40 @@
             }
         }
     </script>
+    <style>
+        #canvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #startButton, #stopButton {
+            position: absolute;
+            top: 10px;
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        #startButton {
+            background-color: #4CAF50;
+        }
+
+        #stopButton {
+            background-color: #f44336;
+            left: 120px;
+        }
+    </style>
     <script type="module" src="main.js"></script>
 </head>
 
 <body>
-    <!-- 3Dモデル表示用のキャンバス -->
-    <canvas id="canvas"></canvas> 
-
-    <!-- 音声認識操作用のボタン -->
-    <button id="start">Start Recording</button>
-    <button id="stop">Stop Recording</button>
+    <canvas id="canvas"></canvas>
+    <button id="startButton">Start Recording</button>
+    <button id="stopButton">Stop Recording</button>
 </body>
 
 </html>
