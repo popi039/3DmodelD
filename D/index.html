@@ -15,36 +15,36 @@
     </script>
     <script type="module" src="main.js"></script>
     <style>
-        #startBtn, #stopBtn {
-            position: fixed;
-            bottom: 20px;
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #canvas {
+            display: block;
+        }
+        .button {
+            position: absolute;
+            bottom: 10px; /* 下から10px */
+            left: 10px; /* 左から10px */
             padding: 10px 20px;
-            font-size: 18px;
-            color: white;
-            background-color: #333;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-            z-index: 1000;
+            background-color: #007bff;
+            color: white;
         }
-
-        #stopBtn {
-            left: 140px; /* 開始ボタンの横に配置 */
-        }
-
-        canvas {
-            display: block;
+        .button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 
 <body>
-    <!-- 3Dモデルを表示するcanvasを作成 -->
-    <canvas id="canvas"></canvas> 
-    
-    <!-- ボタンを追加 -->
-    <button id="startBtn">Start Recording</button>
-    <button id="stopBtn">Stop Recording</button>
+    <canvas id="canvas"></canvas>
+    <button id="startButton" class="button">Start Recording</button>
+    <button id="stopButton" class="button">Stop Recording</button>
 </body>
 
 </html>
