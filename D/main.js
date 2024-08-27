@@ -113,7 +113,7 @@ recognition.onresult = (event) => {
 
     const now = Date.now();
     if (now - lastTriggerTime > triggerDelay) { // 遅延時間を超えている場合にのみトリガー
-        if (transcript.includes('信じられない') || transcript.includes('心臓が止まりそう') || transcript.includes('どうしよう') || transcript.includes('実感がわかない') || transcript.includes('嬉しい')) {
+        if (transcript.includes('ショックな') || transcript.includes('悔しい') || transcript.includes('抜け') || transcript.includes('無駄') || transcript.includes('残念')) {
             if (!isAnimationTriggered) {
                 triggerNodAnimation();
                 lastTriggerTime = now; // 最後にトリガーした時間を更新
@@ -124,7 +124,7 @@ recognition.onresult = (event) => {
     }
 
     // 次の単語が認識されたときのリセット
-    if (waitingForNextTrigger && (transcript.includes('心臓が止まりそう') || transcript.includes('どうしよう') || transcript.includes('実感がわかない') || transcript.includes('嬉しい'))) {
+    if (waitingForNextTrigger && (transcript.includes('悔しい') || transcript.includes('抜け') || transcript.includes('無駄') || transcript.includes('残念'))) {
         isAnimationTriggered = false; // アニメーションが再度トリガー可能にする
         waitingForNextTrigger = false; // 待機状態を解除
         console.log('次の単語が認識されました。アニメーショントリガー状態がリセットされました。');
